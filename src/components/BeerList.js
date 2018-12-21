@@ -26,7 +26,7 @@ class BeerList extends Component {
 
 const mapStateToProps = state => {
   return {
-    beers: setBeers(state.beers)
+    beers: state.beers
   }
 }
 
