@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 const Beer = require('../models/Beer');
 //json data
-const beer_list = require('../public/beer_list.json');
+const beer_list = require('../public/json/beer_list.json');
 
 router.get('/seed', (req, res) => {
   Beer.insertMany(beer_list)
