@@ -26,7 +26,6 @@ router.get('/api/beerlist', (req, res) => {
 });
 
 router.get('*', (req, res) => {
-  console.log(beer_list)
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 

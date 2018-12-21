@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import API from '../utils/API';
 import { setBeers } from '../actions';
 import { connect } from 'react-redux';
+import Beer from './Beer';
+
+const width = {
+  width: "100%"
+}
 
 class BeerList extends Component {
   componentDidMount() {
@@ -10,7 +15,6 @@ class BeerList extends Component {
   getBeerList = () => {
     API.getBeerList()
       .then(response => {
-        console.log(response)
         this.props.getBeers(response.data);
         console.log(this.props)
       }).catch(err => {
@@ -19,7 +23,25 @@ class BeerList extends Component {
   }
   render() {
     return (
-      <h1>Beer List!</h1>
+      <div>
+        <h1>Beer List!</h1>
+        <table style={ width }>
+          <thead>
+            <tr>
+              <th>Brewery Name</th>
+              <th>Beer Name</th>
+              <th>Beer Style</th>
+              <th>ABV</th>
+              <th>IBU</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.beers.map(beer => (
+              <Beer key={beer._id} {...beer}/>
+            ))}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
