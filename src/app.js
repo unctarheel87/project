@@ -1,12 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import BeerList from './components/BeerList';
-import { store } from './store/index';
-import { Provider } from 'react-redux';
+import BeerBrowser from './components/BeerBrowser';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BeerList />
-  </Provider>, 
-  document.getElementById('app')
+export default(props) => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path='/' component={BeerList} />
+      <Route path='/browse' component={BeerBrowser} />
+    </Switch>
+  </BrowserRouter>
 );

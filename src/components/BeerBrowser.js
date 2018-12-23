@@ -3,6 +3,7 @@ import API from '../utils/API';
 import { setBeers } from '../actions';
 import { connect } from 'react-redux';
 import Beer from './Beer';
+import AddBeer from './AddBeer';
 
 const width = {
   width: "90%"
@@ -25,6 +26,7 @@ class BeerList extends Component {
     return (
       <div>
         <h1>Beer List!</h1>
+        <AddBeer />
         <table style={ width }>
           <thead>
             <tr>
@@ -54,7 +56,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBeers: beers => {
+    getBeers: (beers) => {
       dispatch(setBeers(beers))
     }
   }

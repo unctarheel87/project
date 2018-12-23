@@ -29,4 +29,24 @@ router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+router.post('/api/beerlist', (req, res) => {
+  Beer.create(req.body)
+    .then(beer_document => {
+      res.json('Successfully added:\n' + beer_document);
+    }).catch(err => {
+      console.log(err);
+      res.end();
+    })
+});
+
+router.delete('/api/beerlist/:id', (req, res) => {
+  Beer.findByIdAndDelete(req.params.id)
+    .then(beer_document => {
+      res.json('Successfully deleted:\n' + beer_document);
+    }).catch(err => {
+      console.log(err);
+      res.end();
+    })
+});
+
 module.exports = router;
