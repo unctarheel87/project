@@ -1,7 +1,18 @@
 import React from 'react';
 import API from '../utils/API';
 import { connect } from 'react-redux';
-import { remove_Beer } from '../actions'
+import { remove_Beer, update_Beer } from '../actions';
+
+const updateBeer = (id, currentDraft, dispatch) => () => {
+  currentDraft = currentDraft ? false : true;
+  API.updateBeer(id, { currentDraft })
+    .then(response => {
+      console.log(response);
+      dispatch(update_Beer(id, currentDraft));
+    }).catch(err => {
+      console.log(err);
+    })
+}
 
 const removeBeer = (id, dispatch) => () => {
   API.removeBeer(id)
@@ -13,6 +24,10 @@ const removeBeer = (id, dispatch) => () => {
     })
 }
 
+const green = {
+  background: 'lightgreen'
+}
+
 const Beer = ({
   dispatch, 
   "Brewery Name": brewery_name, 
@@ -20,6 +35,7 @@ const Beer = ({
   "Beer Style": beer_style, 
   ABV, 
   IBU,
+  currentDraft,
   _id, 
 }) => (
     <tr>
@@ -29,6 +45,10 @@ const Beer = ({
       <td>{ABV}</td>
       <td>{IBU}</td>
       <td><button onClick={removeBeer(_id, dispatch)}>X</button></td>
+      <td><button 
+        style={currentDraft ? green : null}
+        onClick={updateBeer(_id, currentDraft, dispatch)}
+        >*</button></td>
     </tr>
 );
 

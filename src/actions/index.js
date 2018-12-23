@@ -12,6 +12,14 @@ export const add_Beer = beer => {
   }
 }
 
+export const update_Beer = (id, currentDraft) => {
+  return {
+    type: "UPDATE_BEER",
+    id,
+    currentDraft
+  }
+}
+
 export const remove_Beer = id => {
   return {
     type: "REMOVE_BEER",

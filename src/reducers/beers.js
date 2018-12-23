@@ -1,5 +1,6 @@
 export default (state, action) => {
   switch (action.type) {
+    // beer data
     case "SET_BEERS": 
       return {
         ...state,
@@ -13,11 +14,22 @@ export default (state, action) => {
           action.beer
         ]
       };
+    case "UPDATE_BEER": 
+      return {
+        ...state,
+        beers: state.beers.map(beer => {
+          if(beer._id === action.id) {
+            beer.currentDraft = action.currentDraft;
+          }
+          return beer
+        })
+      };
     case "REMOVE_BEER": 
       return {
         ...state,
         beers: state.beers.filter(beer => beer._id !== action.id)
       };
+    // beer filters
     case "BEER_NAME_ASC":
       return {
         ...state,

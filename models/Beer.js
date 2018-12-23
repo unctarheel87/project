@@ -25,6 +25,11 @@ const beerSchema = new Schema({
     type: String,
     trim: true,
     required: "IBU is required"
+  },
+  "currentDraft": {
+    type: Boolean,
+    default: false,
+    required: true
   }
 });
 
