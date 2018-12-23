@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Beer from './Beer';
 import AddBeer from './AddBeer';
+import SortBeers from './SortBeers';
 
 const width = {
   width: "90%"
@@ -11,6 +12,7 @@ const BeerBrowser = props => (
   <div>
     <h1>Beer List!</h1>
     <AddBeer />
+    <SortBeers />
     <table style={ width }>
       <thead>
         <tr>

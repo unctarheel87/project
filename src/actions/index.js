@@ -18,3 +18,24 @@ export const remove_Beer = id => {
     id
   }
 }
+
+export const beerNameAsc = () => {
+  return {
+    type: "BEER_NAME_ASC"
+  }
+}
+export const beerNameDesc = () => {
+  return {
+    type: "BEER_NAME_DESC"
+  }
+}
+export const abvHigh = () => {
+  return {
+    type: "ABV_HIGH"
+  }
+}
+export const abvLow = () => {
+  return {
+    type: "ABV_LOW"
+  }
+}
