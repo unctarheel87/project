@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import { add_Beer } from '../actions'
+import { add_Beer } from '../actions';
 import { connect } from 'react-redux';
 
 class AddBeer extends Component {
@@ -28,7 +28,7 @@ class AddBeer extends Component {
     API.addBeer(newBeer)
       .then(response => {
         console.log(response);
-        this.props.addBeer(newBeer)
+        this.props.addBeer(response.data)
       }).catch(err => {
         console.log(err);
       })

@@ -32,7 +32,7 @@ router.get('*', (req, res) => {
 router.post('/api/beerlist', (req, res) => {
   Beer.create(req.body)
     .then(beer_document => {
-      res.json('Successfully added:\n' + beer_document);
+      res.json(beer_document);
     }).catch(err => {
       console.log(err);
       res.end();
@@ -42,7 +42,7 @@ router.post('/api/beerlist', (req, res) => {
 router.delete('/api/beerlist/:id', (req, res) => {
   Beer.findByIdAndDelete(req.params.id)
     .then(beer_document => {
-      res.json('Successfully deleted:\n' + beer_document);
+      res.json(beer_document);
     }).catch(err => {
       console.log(err);
       res.end();
