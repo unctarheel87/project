@@ -31,12 +31,9 @@ class App extends Component {
   }
 };
 
-
 const mapDispatchToProps = dispatch => {
   return {
-    getBeers: beers => {
-      dispatch(setBeers(beers))
-    }
+    getBeers: beers => dispatch(setBeers(beers))
   }
 }
 

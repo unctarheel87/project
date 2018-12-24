@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Beer from './Beer';
 import AddBeer from './AddBeer';
 import SortBeers from './SortBeers';
+import selectBeers from '../selectors/sortBeers';
 
 const size = {
   width: "90%",
@@ -50,7 +51,7 @@ const BeerBrowser = props => (
 
 const mapStateToProps = state => {
   return {
-    beers: state.beers
+    beers: selectBeers(state.beers, state.filters)
   }
 }
 

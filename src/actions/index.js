@@ -27,23 +27,13 @@ export const remove_Beer = id => {
   }
 }
 
-export const beerNameAsc = () => {
+export const sortByBeerName = () => {
   return {
-    type: "BEER_NAME_ASC"
+    type: "SORT_BY_BEER_NAME"
   }
 }
-export const beerNameDesc = () => {
+export const sortByBreweryName = () => {
   return {
-    type: "BEER_NAME_DESC"
-  }
-}
-export const abvHigh = () => {
-  return {
-    type: "ABV_HIGH"
-  }
-}
-export const abvLow = () => {
-  return {
-    type: "ABV_LOW"
+    type: "SORT_BY_BREWERY_NAME"
   }
 }

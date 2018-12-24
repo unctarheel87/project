@@ -1,38 +1,38 @@
 import React from 'react';
-import { beerNameAsc, beerNameDesc, abvHigh, abvLow } from '../actions';
+import { sortByBeerName, sortByBreweryName } from '../actions';
 import { connect } from 'react-redux';
 
-const handleChange = props => () => {
-  props[event.target.value]();
+const handleChange = props => e => {
+  if (e.target.value === "beer_name") {
+    props.sortByBeerName();
+  } else if (e.target.value === "brewery_name") {
+    props.sortByBreweryName();
+  }
 };
 
-const SortBeers = (props) => (
+const SortBeers = props => (
   <form className="uk-width-1-6 uk-margin">
-    <select className="uk-select" onChange={ handleChange(props) }>
-      <option value=''>filter</option>
-      <option value={'beer_name_asc'}>Beer Name (ascending)</option>
-      <option value={'beer_name_desc'}>Beer Name (descending)</option>
-      <option value={'abv_high'}>ABV (highest)</option>
-      <option value={'abv_low'}>ABV (lowest)</option>
+    <select className="uk-select" value={props.filters.sortBy} onChange={ handleChange(props) }>
+      <option value="">filter</option>
+      <option value="beer_name">Beer Name</option>
+      <option value="brewery_name">Brewery Name</option>
+      <option value="">ABV (highest)</option>
+      <option value="">ABV (lowest)</option>
     </select>
   </form>
 )   
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    beer_name_asc: () => {
-      dispatch(beerNameAsc())
-    },
-    beer_name_desc: () => {
-      dispatch(beerNameDesc())
-    },
-    abv_high: () => {
-      dispatch(abvHigh())
-    },
-    abv_low: () => {
-      dispatch(abvLow())
-    }
+    filters: state.filters
   }
 }
 
-export default connect(null, mapDispatchToProps)(SortBeers);
+const mapDispatchToProps = dispatch => {
+  return {
+    sortByBeerName: () => dispatch(sortByBeerName()),
+    sortByBreweryName: () => dispatch(sortByBreweryName())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SortBeers);

@@ -5,10 +5,11 @@ import { remove_Beer, update_Beer } from '../actions';
 
 const updateBeer = (id, currentDraft, dispatch) => () => {
   currentDraft = currentDraft ? false : true;
+  console.log(currentDraft)
   API.updateBeer(id, { currentDraft })
     .then(response => {
       console.log(response);
-      dispatch(update_Beer(id, currentDraft));
+      dispatch(update_Beer(id, { currentDraft }));
     }).catch(err => {
       console.log(err);
     })

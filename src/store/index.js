@@ -1,9 +1,8 @@
-import { createStore } from "redux";
-import reducer from "../reducers/beers";
+import { createStore, combineReducers } from "redux";
+import beersReducer from "../reducers/beers";
+import filtersReducer from "../reducers/filters";
 
-const initialState = { 
-  beers: [],
-  msg: ''
-};
-
-export const store = createStore(reducer, initialState);
+export const store = createStore(combineReducers({
+  beers: beersReducer,
+  filters: filtersReducer
+}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

@@ -47,7 +47,6 @@ const BeerList = (props) => (
         <tbody>
           { props.beers.length > 0 ?
             props.beers.map(beer => (
-              beer.currentDraft &&
               <CurrentDraftBeer key={beer._id} {...beer}/>
             )) :
             <tr className="uk-text-center uk-margin-large-top"><td>Loading...</td></tr>
@@ -60,7 +59,7 @@ const BeerList = (props) => (
 
 const mapStateToProps = state => {
   return {
-    beers: state.beers
+    beers: state.beers.filter(beer => beer.currentDraft)
   }
 }
 
