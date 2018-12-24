@@ -1,19 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Beer from './Beer';
 import AddBeer from './AddBeer';
 import SortBeers from './SortBeers';
 
-const width = {
-  width: "90%"
+const size = {
+  width: "90%",
+  margin: "15px auto"
+}
+
+const linkStyle = {
+  position: "absolute",
+  right: "15px",
+  top: "10px",
+  color: "black"
 }
 
 const BeerBrowser = props => (
-  <div>
-    <h1>Beer List!</h1>
+  <div style={ size }>
+    <Link className="uk-flex uk-around" style={ linkStyle } to="/">
+      <i className="material-icons uk-margin-small-right">format_list_bulleted</i>
+      Draft List
+    </Link>
+    <h1 className="uk-text-center uk-margin-medium">Beer Database</h1>
     <AddBeer />
     <SortBeers />
-    <table style={ width }>
+    <table className="uk-table uk-table-divider">
       <thead>
         <tr>
           <th>Brewery Name</th>
@@ -24,9 +37,12 @@ const BeerBrowser = props => (
         </tr>
       </thead>
       <tbody>
-        {props.beers.map(beer => (
-          <Beer key={beer._id} {...beer}/>
-        ))}
+        { props.beers.length > 0 ?
+          props.beers.map(beer => (
+            <Beer key={beer._id} {...beer}/>
+          )) :
+          <tr className="uk-text-center uk-margin-large-top"><td>Loading...</td></tr>
+        }
       </tbody>
     </table>
   </div>

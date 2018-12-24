@@ -2,7 +2,8 @@ import { createStore } from "redux";
 import reducer from "../reducers/beers";
 
 const initialState = { 
-  beers: []
+  beers: [],
+  msg: ''
 };
 
 export const store = createStore(reducer, initialState);

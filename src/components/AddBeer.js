@@ -34,16 +34,26 @@ class AddBeer extends Component {
       })
   }
   render() {
+    console.log(this.props)
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.brewery_name} onChange={this.handleChange('brewery_name')} />
-        <input type="text" value={this.state.beer_name} onChange={this.handleChange('beer_name')} />
-        <input type="text" value={this.state.beer_style} onChange={this.handleChange('beer_style')} />
-        <input type="text" value={this.state.ABV} onChange={this.handleChange('ABV')} />
-        <input type="text" value={this.state.IBU} onChange={this.handleChange('IBU')} />
-        <button type="submit">Add</button>
-      </form>
+      <div>
+        <form className="uk-flex" onSubmit={this.handleSubmit}>
+          <input className="uk-input" type="text" placeholder="Brewery Name" value={this.state.brewery_name} onChange={this.handleChange('brewery_name')} />
+          <input className="uk-input" type="text" placeholder="Beer Name"  value={this.state.beer_name} onChange={this.handleChange('beer_name')} />
+          <input className="uk-input" type="text" placeholder="Beer Style" value={this.state.beer_style} onChange={this.handleChange('beer_style')} />
+          <input className="uk-input" type="text" placeholder="ABV" value={this.state.ABV} onChange={this.handleChange('ABV')} />
+          <input className="uk-input" type="text" placeholder="IBU" value={this.state.IBU} onChange={this.handleChange('IBU')} />
+          <button className="uk-button uk-button-primary" type="submit">Add</button>
+        </form>
+        <p>{this.props.msg}</p>
+      </div>
     )   
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    msg: state.msg
   }
 }
 
@@ -55,4 +65,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddBeer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddBeer);

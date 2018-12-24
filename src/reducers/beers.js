@@ -12,7 +12,8 @@ export default (state, action) => {
         beers: [
           ...state.beers,
           action.beer
-        ]
+        ],
+        msg: "New beer succesfully added!"
       };
     case "UPDATE_BEER": 
       return {
@@ -27,7 +28,8 @@ export default (state, action) => {
     case "REMOVE_BEER": 
       return {
         ...state,
-        beers: state.beers.filter(beer => beer._id !== action.id)
+        beers: state.beers.filter(beer => beer._id !== action.id),
+        msg: `Beer ID ${action.id} succesfully deleted`
       };
     // beer filters
     case "BEER_NAME_ASC":

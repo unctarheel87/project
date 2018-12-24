@@ -7,8 +7,9 @@ const handleChange = props => () => {
 };
 
 const SortBeers = (props) => (
-  <form>
-    <select onChange={ handleChange(props) }>
+  <form className="uk-width-1-6 uk-margin">
+    <select className="uk-select" onChange={ handleChange(props) }>
+      <option value=''>filter</option>
       <option value={'beer_name_asc'}>Beer Name (ascending)</option>
       <option value={'beer_name_desc'}>Beer Name (descending)</option>
       <option value={'abv_high'}>ABV (highest)</option>

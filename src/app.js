@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import BeerList from './components/BeerList';
 import BeerBrowser from './components/BeerBrowser';
 import { setBeers } from './actions';

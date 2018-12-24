@@ -25,7 +25,7 @@ const removeBeer = (id, dispatch) => () => {
 }
 
 const green = {
-  background: 'lightgreen'
+  background: '#DCEDC8'
 }
 
 const Beer = ({
@@ -38,17 +38,20 @@ const Beer = ({
   currentDraft,
   _id, 
 }) => (
-    <tr>
+    <tr style={currentDraft ? green : null}>
       <td>{brewery_name}</td>
       <td>{beer_name}</td>
       <td>{beer_style}</td>
       <td>{ABV}</td>
       <td>{IBU}</td>
-      <td><button onClick={removeBeer(_id, dispatch)}>X</button></td>
-      <td><button 
-        style={currentDraft ? green : null}
+      <td><i 
+        className="material-icons" 
+        onClick={removeBeer(_id, dispatch)}
+        >remove_circle</i></td>
+      <td><i 
+        className="material-icons"
         onClick={updateBeer(_id, currentDraft, dispatch)}
-        >*</button></td>
+        >check_circle</i></td>
     </tr>
 );
 
