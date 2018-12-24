@@ -20,6 +20,7 @@ export default (state = [], action) => {
     });
     case "REMOVE_BEER": 
       return state.filter(beer => beer._id !== action.id)
+      
     default:
       return state;
   }

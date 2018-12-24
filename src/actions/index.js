@@ -32,8 +32,16 @@ export const sortByBeerName = () => {
     type: "SORT_BY_BEER_NAME"
   }
 }
+
 export const sortByBreweryName = () => {
   return {
     type: "SORT_BY_BREWERY_NAME"
+  }
+}
+
+export const updateMsg = (msg) => {
+  return {
+    type: "UPDATE_MSG",
+    msg
   }
 }

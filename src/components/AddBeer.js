@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import { add_Beer } from '../actions';
+import { add_Beer, updateMsg } from '../actions';
 import { connect } from 'react-redux';
 
 class AddBeer extends Component {
@@ -29,6 +29,7 @@ class AddBeer extends Component {
       .then(response => {
         console.log(response);
         this.props.addBeer(response.data)
+        this.props.updateMsg('New beer successfully added!')
       }).catch(err => {
         console.log(err);
       })
@@ -50,10 +51,17 @@ class AddBeer extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    addBeer: beer => dispatch(add_Beer(beer))
+    msg: state.msg
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddBeer);
+const mapDispatchToProps = dispatch => {
+  return {
+    addBeer: beer => dispatch(add_Beer(beer)),
+    updateMsg: msg => dispatch(updateMsg(msg))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBeer);

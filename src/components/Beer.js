@@ -1,7 +1,7 @@
 import React from 'react';
 import API from '../utils/API';
 import { connect } from 'react-redux';
-import { remove_Beer, update_Beer } from '../actions';
+import { remove_Beer, update_Beer, updateMsg } from '../actions';
 
 const updateBeer = (id, currentDraft, dispatch) => () => {
   currentDraft = currentDraft ? false : true;
@@ -19,6 +19,7 @@ const removeBeer = (id, dispatch) => () => {
     .then(response => {
       console.log(response);
       dispatch(remove_Beer(id));
+      dispatch(updateMsg(`Beer ID ${id} successfully deleted.`));
     }).catch(err => {
       console.log(err);
     })
