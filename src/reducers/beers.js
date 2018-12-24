@@ -4,7 +4,7 @@ export default (state = [], action) => {
       return action.beers
     case "ADD_BEER": 
       return [
-        ...state.beers,
+        ...state,
         action.beer
       ];
     case "UPDATE_BEER": 

@@ -34,7 +34,6 @@ class AddBeer extends Component {
       })
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         <form className="uk-flex" onSubmit={this.handleSubmit}>
@@ -51,18 +50,10 @@ class AddBeer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    msg: state.msg
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
-    addBeer: beer => {
-      dispatch(add_Beer(beer))
-    }
+    addBeer: beer => dispatch(add_Beer(beer))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddBeer);
+export default connect(null, mapDispatchToProps)(AddBeer);
