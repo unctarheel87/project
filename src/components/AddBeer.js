@@ -27,7 +27,6 @@ class AddBeer extends Component {
     }
     API.addBeer(newBeer)
       .then(response => {
-        console.log(response);
         this.props.addBeer(response.data)
         this.props.updateMsg('New beer successfully added!')
       }).catch(err => {

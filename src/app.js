@@ -14,7 +14,6 @@ class App extends Component {
     API.getBeerList()
       .then(response => {
         this.props.getBeers(response.data);
-        console.log(this.props)
       }).catch(err => {
         console.log(err);
       })

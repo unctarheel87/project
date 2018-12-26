@@ -5,6 +5,10 @@ export default (beers, { sortBy }) => {
         return a["Brewery Name"] > b["Brewery Name"] ? 1 : -1;
       } else if (sortBy === 'beer_name') {
         return a["Beer Name"] > b["Beer Name"] ? 1 : -1;
+      } else if (sortBy === 'beer_name') {
+        return a["Beer Style"] > b["Beer Style"] ? 1 : -1;
+      } else if (sortBy === 'beer_name') {
+        return a["ABV"] > b["ABV"] ? 1 : -1;
       }
   });
 };

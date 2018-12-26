@@ -7,7 +7,6 @@ const updateBeer = (id, currentDraft, dispatch) => () => {
   currentDraft = currentDraft ? false : true;
   API.updateBeer(id, { currentDraft })
     .then(response => {
-      console.log(response);
       dispatch(update_Beer(id, { currentDraft }));
     }).catch(err => {
       console.log(err);
@@ -17,7 +16,6 @@ const updateBeer = (id, currentDraft, dispatch) => () => {
 const removeBeer = (id, dispatch) => () => {
   API.removeBeer(id)
     .then(response => {
-      console.log(response);
       dispatch(remove_Beer(id));
       dispatch(updateMsg(`Beer ID ${id} successfully deleted.`));
     }).catch(err => {

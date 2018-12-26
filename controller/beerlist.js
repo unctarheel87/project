@@ -40,7 +40,6 @@ router.post('/api/beerlist', (req, res) => {
 });
 
 router.put('/api/beerlist/:id', (req, res) => {
-  console.log(req.body)
   Beer.findByIdAndUpdate(req.params.id, { currentDraft: req.body.currentDraft })
     .then(beer_document => {
       res.json(beer_document);
