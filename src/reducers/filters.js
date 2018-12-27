@@ -1,4 +1,6 @@
-export default (state =  {}, action) => {
+export default (state = {
+  sortBy: '', text: ''
+}, action) => {
   switch (action.type) {
     case 'SORT_BY_BREWERY_NAME':
       return {
@@ -15,6 +17,16 @@ export default (state =  {}, action) => {
         ...state,
         sortBy: 'abv'
     };
+    case 'SORT_BY_DRAFT':
+      return {
+        ...state,
+        sortBy: 'draft'
+    };
+    case 'SET_TEXT_FILTER':
+      return {
+        ...state,
+        text: action.text
+      };
     default:
       return state;
   }

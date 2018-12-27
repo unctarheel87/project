@@ -1,5 +1,11 @@
 import React from 'react';
-import { sortByBreweryName, sortByBeerName, sortByABV } from '../actions';
+import 
+  { sortByBreweryName, 
+    sortByBeerName, 
+    sortByABV, 
+    sortByDraft,
+    setTextFilter,
+   } from '../actions';
 import { connect } from 'react-redux';
 
 const handleChange = props => e => {
@@ -9,16 +15,30 @@ const handleChange = props => e => {
     props.sortByBeerName();
   } else if (e.target.value === "abv") {
     props.sortByABV();
+  } else if (e.target.value === "draft") {
+    props.sortByDraft();
   }
 };
 
+const onTextChange = props => e => {
+  props.setTextFilter(e.target.value)
+};
+
 const SortBeers = props => (
-  <form className="uk-width-1-6 uk-margin">
+  <form className="uk-width-1-4 uk-margin uk-flex">
+    <input
+      type="text"
+      className="uk-input"
+      value={props.filters.text}
+      onChange={ onTextChange(props) }
+      placeholder="Search"
+    />
     <select className="uk-select" value={props.filters.sortBy} onChange={ handleChange(props) }>
       <option value="">filter</option>
       <option value="brewery_name">Brewery Name</option>
       <option value="beer_name">Beer Name</option>
       <option value="abv">ABV</option>
+      <option value="draft">Current Draft</option>
     </select>
   </form>
 )   
@@ -33,7 +53,9 @@ const mapDispatchToProps = dispatch => {
   return {
     sortByBreweryName: () => dispatch(sortByBreweryName()),
     sortByBeerName: () => dispatch(sortByBeerName()),
-    sortByABV: () => dispatch(sortByABV())
+    sortByABV: () => dispatch(sortByABV()),
+    sortByDraft: () => dispatch(sortByDraft()),
+    setTextFilter: (text) => dispatch(setTextFilter(text))
   }
 }
 

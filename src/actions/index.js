@@ -49,6 +49,19 @@ export const sortByABV = () => {
   }
 }
 
+export const sortByDraft = () => {
+  return {
+    type: "SORT_BY_DRAFT"
+  }
+};
+
+export const setTextFilter = (text = '') => {
+  return {
+    type: 'SET_TEXT_FILTER',
+    text
+  }
+};
+
 // messages actions
 
 export const updateMsg = (msg) => {
