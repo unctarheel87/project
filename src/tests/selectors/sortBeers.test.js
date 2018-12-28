@@ -26,7 +26,8 @@ const beers = [
 
 test('should sort by Beer Name', () => {
   const filters = {
-    sortBy: 'beer_name'
+    sortBy: 'beer_name',
+    text: ''
   }
   const result = sortBeers(beers, filters)
   expect(result).toEqual([ beers[2], beers[0], beers[1] ])
