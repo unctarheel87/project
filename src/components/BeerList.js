@@ -8,7 +8,7 @@ const size = {
   width: "80%",
   padding: "15px",
   margin: "auto",
-  background: "rgba(255, 255, 255, 0.9",
+  background: "rgba(255, 255, 255, 0.9)",
   top: "20vh",
   borderRadius: "5px"
 }
@@ -16,7 +16,8 @@ const size = {
 const background = {
   background: "url('/images/beertap.jpeg')",
   backgroundSize: "cover",
-  height: "100vh"
+  height: "100vh",
+  overflow: "auto"
 }
 
 const linkStyle = {
