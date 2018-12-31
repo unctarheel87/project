@@ -27,7 +27,7 @@ const linkStyle = {
   color: "whitesmoke"
 }
 
-const BeerList = (props) => (
+export const BeerList = (props) => (
   <section style={ background }>
     <Link className="uk-flex uk-around" style={ linkStyle } to="/browse">
       <i className="material-icons uk-margin-small-right">table_chart</i>

@@ -3,7 +3,7 @@ import API from '../utils/API';
 import { add_Beer, updateMsg } from '../actions';
 import { connect } from 'react-redux';
 
-class AddBeer extends Component {
+export class AddBeer extends Component {
   state = {
     brewery_name: '',
     beer_name: '',

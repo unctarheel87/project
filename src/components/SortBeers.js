@@ -24,7 +24,7 @@ const onTextChange = props => e => {
   props.setTextFilter(e.target.value)
 };
 
-const SortBeers = props => (
+export const SortBeers = props => (
   <form className="uk-width-1-4 uk-margin uk-flex">
     <input
       type="text"
